@@ -1,4 +1,3 @@
-cat > scripts/deploy_db.sh <<'EOF'
 #!/bin/bash
 set -euo pipefail
 export DEBIAN_FRONTEND=noninteractive
