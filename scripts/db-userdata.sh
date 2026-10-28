@@ -10,7 +10,12 @@ apt-get install -y gnupg curl
 
 curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
   gpg --batch --yes -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
-echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" \
+
+CODENAME=noble
+if ! curl -fsI "https://repo.mongodb.org/apt/ubuntu/dists/${CODENAME}/mongodb-org/7.0/Release" >/dev/null; then
+  CODENAME=jammy
+fi
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu ${CODENAME}/mongodb-org/7.0 multiverse" \
   > /etc/apt/sources.list.d/mongodb-org-7.0.list
 
 apt-get update -y
