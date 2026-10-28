@@ -24,4 +24,3 @@ sed -i 's/^\(\s*bindIp:\s*\)127\.0\.0\.1/\10.0.0.0/' /etc/mongod.conf
 
 systemctl enable mongod
 systemctl restart mongod
-EOF

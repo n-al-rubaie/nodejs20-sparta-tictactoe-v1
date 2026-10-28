@@ -27,4 +27,3 @@ sudo systemctl restart mongod
 sleep 5
 sudo systemctl is-active mongod
 grep bindIp /etc/mongod.conf
-EOF
